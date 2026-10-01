@@ -5,12 +5,21 @@
   "source_worktree_status": [],
   "repository": "view.files-default",
   "files_sha256": {
-    ".github/workflows/verify.yml": "b737a9f83062bdb3437455e7abab0362ee806c4663fe80af564ea77a353765b3",
+    ".github/workflows/release.yml": "389609993160480e4ff9a918e5ce91c2967207b3120cff633902d9c657e30b39",
+    ".gitignore": "eb23201bf8045bae97d6f115436fbeceb52a080b218644bf1b15f92b9da8dd4e",
     "CONTEXT.md": "98d248c1248c7777321cb6ce7a2e34af11391074ca34fc9819fba6f389846b80",
-    "LICENSING.md": "0bddd694c9d8b704519bf4b02a97cb8e0896867f1e102c3b6849c9088eb1f830",
-    "README.md": "a9df2b356265c50c309f65748c515ce692a45f13b33aeebb904804673bf45330",
-    "package.json": "5807edfda53a01cd7d255d1d7f3e28a3b19e5a08aed4de3944a44991f4b21d6e",
-    "scripts/verify.mjs": "39c19a4b7930ca862048fc93421e8568acd721fd4b8aefe287faa657f7a477f9",
-    "src/views/files-default.js": "313497a661ada365c46f4e74f4e7db3bec89aa7bbc8a76db4f2369c91762d577"
-  }
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSING.md": "d4fd2edc5d99638f92d514cfa5c210d893e65f109a3640717eec4978ad2f849b",
+    "NOTICE": "104f1184f5631e863a3d898d8e25580702a52f5c290544bb94bc26b65d2e026a",
+    "NOTICE-EVIDENCE.json": "fc30880c90f284c2f61521d3258f73ca50f87b035edcedc2bfd6cdd5f8788f9f",
+    "PUBLISHING.md": "bd53609e046de8dffc3d281d2bff686cdd58439bf853617b0c2fde0478e63458",
+    "README.md": "dfa58bfa953b282a4e98ec336f7619cec4ac68c240fdc3de290dd85207bbb0c3",
+    "package.json": "fc757062db001a3ad537c5e8676293b7a801cb724543b21243db82839d797ba7",
+    "release.json": "2397f5aeb4f97ea8837acefbb59f98c988ba207bea825a4903a92cd00fc3e4d7",
+    "scripts/release.py": "45e25fd41691c02c8487ac9365cd74e5cb3c4ea8f602005ab764438e25b90be8",
+    "scripts/verify.mjs": "d05cc6613fd971c2c273cf59c7926da47bfc153b52571c36ab0455b9ae2aa094",
+    "src/views/files-default.js": "313497a661ada365c46f4e74f4e7db3bec89aa7bbc8a76db4f2369c91762d577",
+    "test/test_release.py": "330586a32413735fdaf28df1071ff8ddd16a7b020fdfa1af92849a277faf80da"
+  },
+  "publication_preparation_source_revision": "ca48dbf190aa66e948a04d2f82a624295b7b6464"
 }
