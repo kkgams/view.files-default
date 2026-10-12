@@ -8,7 +8,7 @@
     "src/views/files-default.js"
   ],
   "scripts": {
-    "test": "node scripts/verify.mjs && python3 -m unittest discover -s test -p 'test_*.py'"
+    "test": "node scripts/verify.mjs && node scripts/test-files-default.mjs && python3 -m unittest discover -s test -p 'test_*.py'"
   },
   "engines": {
     "node": ">=24"

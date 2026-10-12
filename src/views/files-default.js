@@ -102,7 +102,7 @@ export class FilesDefault extends HTMLElement {
     this.setStatus("Loading...", "info")
 
     try {
-      const stat = unwrap(await runtime.invoke("fs/fs::stat", [this.path]))
+      const stat = unwrap(await runtime.invoke("fs/fs::stat", this.path))
 
       const rows = [
         ["Name", this.path.split("/").pop() || this.path],
