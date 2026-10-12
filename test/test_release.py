@@ -2,6 +2,8 @@ import io
 import importlib.util
 import json
 import os
+import subprocess
+import sys
 from pathlib import Path
 import tempfile
 import unittest
@@ -192,6 +194,34 @@ class ReleaseTests(unittest.TestCase):
         with patch.object(release.subprocess, 'run', side_effect=RuntimeError('fetch failed')):
             with self.assertRaises(RuntimeError):
                 release.branch('v0.1.0')
+
+
+class CurrentCandidateTests(unittest.TestCase):
+    def test_live_stage_and_check(self):
+        # Synthetic fixtures cannot detect stale evidence in the prepared checkout.
+        root = SCRIPT.parents[1]
+        package = json.loads((root / 'package.json').read_text())
+        tag = 'v' + package['version']
+        env = dict(os.environ)
+        env.update({f'APPROVED_{name}_SHA256': release.digest((root / name).read_bytes())
+                    for name in ('LICENSE', 'NOTICE')})
+        env['GITHUB_REPOSITORY'] = 'kkgams/' + package['name']
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / 'candidate'
+            for command in ('stage', 'check'):
+                result = subprocess.run(
+                    [sys.executable, str(SCRIPT), command, '--root', str(root),
+                     '--out', str(out), '--tag', tag],
+                    env=env, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            name = package['name'] + '-' + package['version'] + '.zip'
+            self.assertEqual({p.name for p in out.iterdir()}, {name, 'SHA256SUMS'})
+            with zipfile.ZipFile(out / name) as archive:
+                unit = json.loads(archive.read('unit.json'))
+                self.assertEqual(unit['version'], package['version'])
+                for source in package['files']:
+                    self.assertEqual(archive.read(source.removeprefix('src/')),
+                                     (root / source).read_bytes())
 
 
 if __name__ == '__main__':
